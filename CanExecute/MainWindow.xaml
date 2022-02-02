@@ -17,6 +17,6 @@
             <Label Content="Enable"></Label>
             <CheckBox VerticalAlignment="Center" Command="{Binding CheckBoxCmd}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" IsChecked="True"></CheckBox>
         </StackPanel>
-        <Button Grid.Row="2" Width="180" Height="30" Content="Click" Command="{Binding BtnCmd}" local:RelayCommandExtensions.IsCommandUpdateEnabled="True"></Button>
+        <Button Grid.Row="2" Width="180" Height="30" Content="Click" Command="{Binding BtnCmd}" ></Button>
     </Grid>
 </Window>

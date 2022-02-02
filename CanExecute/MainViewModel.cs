@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
@@ -10,7 +11,7 @@ namespace CanExecute
     {
         private bool _isCheckBoxEnabled;
         private string _title;
-        public AsyncRelayCommand BtnCmd { get; }
+        public MyRelayCommand BtnCmd { get; }
         public ICommand CheckBoxCmd { get; }
 
         public bool IsCheckBoxEnabled
@@ -27,7 +28,7 @@ namespace CanExecute
 
         public MainViewModel()
         {
-            BtnCmd = new AsyncRelayCommand(DoSomething, CanDoSomething);
+            BtnCmd = new MyRelayCommand(DoSomething, CanDoSomething);
             CheckBoxCmd = new RelayCommand<bool>(Checked);
             IsCheckBoxEnabled = true;
             Title = $"Active: {IsCheckBoxEnabled}";
@@ -39,12 +40,13 @@ namespace CanExecute
             Title = $"Active: {IsCheckBoxEnabled}";
         }
 
-        private bool CanDoSomething()
+        private bool CanDoSomething(object obj)
         {
+            Debug.WriteLine($"--- {IsCheckBoxEnabled}");
             return IsCheckBoxEnabled;
         }
 
-        private async Task DoSomething()
+        private async void DoSomething(object obj)
         {
             IsCheckBoxEnabled = false;
             await Task.Delay(1000);
