@@ -41,6 +41,9 @@ namespace CanExecute
         }
 
         private bool _isMyTaskRunning = false;
+        public bool IsMyTaskRunning
+        { get { return _isMyTaskRunning; } }
+
         private bool _doingWithCallback;
         private readonly Action<object, Action> _executeWithCallback;
 

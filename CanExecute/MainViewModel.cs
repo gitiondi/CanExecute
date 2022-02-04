@@ -54,7 +54,7 @@ namespace CanExecute
         private bool CanDoSomething(object obj)
         {
             Debug.WriteLine($"--- {IsCheckBoxEnabled}");
-            return IsCheckBoxEnabled;
+            return IsCheckBoxEnabled && !BtnCmd.IsMyTaskRunning;
         }
 
         private async void DoSomething(object cmdParm, System.Action doThisWhenFinished)
